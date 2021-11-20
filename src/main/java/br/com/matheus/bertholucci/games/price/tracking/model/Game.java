@@ -3,10 +3,8 @@ package br.com.matheus.bertholucci.games.price.tracking.model;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,6 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "game")
 public class Game {
 
@@ -27,15 +26,15 @@ public class Game {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String name;
 
-    @JsonAlias("role")
+    @JsonAlias("min_price")
     @JsonProperty(required = true)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private String role;
+    private String min_price;
 
-    @JsonAlias("price")
+    @JsonAlias("discount_percentage")
     @JsonProperty(required = true)
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private Double price;
+    private String percentage;
 
     @JsonAlias("date")
     @JsonProperty(required = true)

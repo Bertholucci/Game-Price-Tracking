@@ -21,27 +21,12 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public Game save(Game dto) {
-        try {
-            String uuid = UUID.randomUUID().toString();
-            dto.setId(uuid);
-
-            if (dto.getRole().isEmpty() || dto.getPrice().isNaN() || dto.getPlatform().isEmpty() || dto.getName().isEmpty() || dto.getDate() == null) {
-                throw new EmptyFieldException("One or more fields have been published incorrectly, please fix it and try again!");
-            }
-
-            return repository.save(dto);
-        } catch (EmptyFieldException e) {
-            log.error(e.getMessage());
-            e.printStackTrace();
-        }
-
-        return dto;
+        return repository.save(dto);
     }
 
     @Override
     public List<Game> findAll() {
         return repository.findAll();
     }
-
 
 }

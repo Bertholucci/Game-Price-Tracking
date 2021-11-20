@@ -16,15 +16,15 @@ import java.util.UUID;
 public class GameController {
 
     @Autowired
-    private GameService service;
+    private GameService gameService;
 
     @GetMapping("/games")
     public List<Game> findAll(){
-        return service.findAll();
+        return gameService.findAll();
     }
 
     @PostMapping("/game")
     public Game save(@RequestBody Game dto){
-        return service.save(dto);
+        return gameService.save(dto);
     }
 }
